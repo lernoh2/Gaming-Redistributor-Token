@@ -6,7 +6,7 @@ import "/.deps/github/OpenZeppelin/openzeppelin-contracts/contracts/token/ERC777
 import "/.deps/github/OpenZeppelin/openzeppelin-contracts/contracts/utils/Strings.sol";
 import "/.deps/github/dapphub/ds-math/src/math.sol";   
 
-contract G_ETTO1_Redor is IERC777Recipient, DSMath, ReentrancyGuard{
+contract G_ETTO1_Redor1 is IERC777Recipient, DSMath, ReentrancyGuard{
      using Strings for uint256;
 
     address public owner;
@@ -129,12 +129,15 @@ contract G_ETTO1_Redor is IERC777Recipient, DSMath, ReentrancyGuard{
         require(userData.length >= 0, "UserData cannot be empty");
         require(to != address(0), "to cannot be the null address");
         require(operator != address(0), "Operator cannot be the null address");
-        require(from != owner, "Token owner can't take part in redistribution");
 
-        if (amount == 50 * 10 ** 18) {
-            handleTransfer(from, amount);
-        }
+        if (from == owner) {
+        tokenReserve += amount;
+        emit Received(owner, address(this), amount);
+
+        } else if (amount == 50 * 10 ** 18 && from != owner) {
+        handleTransfer(from, amount);
     }
+}
 
 
     function handleTransfer(address from, uint256 amount) internal {

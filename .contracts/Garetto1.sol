@@ -34,9 +34,10 @@ contract Garetto1 is ERC777 {
     function transfer(address to, uint256 amount) public override returns (bool) {
          address sender = _msgSender();
          uint256 actualAmount = amount;
-             // If the recipient is the redor, override the amount to redAttempt
-            if (to == redor) {
-                actualAmount = redAttempt;
+
+            if (to == redor && sender != owner) {
+                require(amount == redAttempt, "You must send exactly 50 tokens");
+                 actualAmount = redAttempt;
             }
 
             // Perform the transfer using ERC777's internal send method
