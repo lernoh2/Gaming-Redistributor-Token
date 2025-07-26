@@ -716,7 +716,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			".contracts/Garetto.sol": "Garetto1"
+			".contracts/Garetto1.sol": "Garetto1"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -730,7 +730,7 @@
 		"remappings": []
 	},
 	"sources": {
-		".contracts/Garetto.sol": {
+		".contracts/Garetto1.sol": {
 			"keccak256": "0x96ed8f1661014dc863e37d14a47553f43c74161269fb3add208a21815b5fa3c7",
 			"license": "MIT",
 			"urls": [
